@@ -28,21 +28,47 @@ export function CommitRail() {
     );
     if (sections.length === 0) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (!visible) return;
-        const index = sections.findIndex((s) => s === visible.target);
-        if (index === -1) return;
-        setActiveIndex(index);
-      },
-      { rootMargin: "-40% 0px -50% 0px", threshold: [0, 0.5, 1] }
-    );
+    let ticking = false;
 
-    sections.forEach((s) => observer.observe(s));
-    return () => observer.disconnect();
+    function updateActive() {
+      ticking = false;
+
+      // The footer ("contact") is shorter than the mid-viewport band an
+      // IntersectionObserver would need it to cross, so it could never
+      // become active once the page hit max scroll. Scrolled-to-bottom is
+      // checked directly instead of inferred from any one section's box.
+      const atBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 2;
+      if (atBottom) {
+        setActiveIndex(sections.length - 1);
+        return;
+      }
+
+      const threshold = window.innerHeight * 0.4;
+      let index = 0;
+      for (let i = 0; i < sections.length; i++) {
+        if (sections[i].getBoundingClientRect().top <= threshold) {
+          index = i;
+        }
+      }
+      setActiveIndex(index);
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(updateActive);
+      }
+    }
+
+    updateActive();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   return (
@@ -57,7 +83,7 @@ export function CommitRail() {
         />
         <div
           aria-hidden
-          className="absolute left-0 h-4 w-4 rounded-full bg-cyan shadow-[0_0_0_4px_var(--cyan-dark)] transition-[top] duration-300 ease-out"
+          className="absolute left-0 h-4 w-4 rounded-full bg-accent shadow-[0_0_0_4px_var(--accent-dark)] transition-[top] duration-300 ease-out"
           style={{ top: activeIndex * ROW_HEIGHT + 4 }}
         />
         <ul className="flex flex-col" style={{ gap: `${ROW_HEIGHT - 16}px` }}>
@@ -71,14 +97,14 @@ export function CommitRail() {
                   aria-hidden
                   className={`h-2.5 w-2.5 shrink-0 border ${
                     i === activeIndex
-                      ? "border-cyan bg-cyan"
+                      ? "border-accent bg-accent"
                       : "border-bevel-light bg-screen-inset group-hover:border-ink-dim"
                   }`}
                 />
                 <span
                   className={`font-term text-lg leading-none whitespace-nowrap transition-colors ${
                     i === activeIndex
-                      ? "text-cyan"
+                      ? "text-accent"
                       : "text-ink-faint group-hover:text-ink-dim"
                   }`}
                 >

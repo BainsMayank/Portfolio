@@ -26,7 +26,7 @@ export function PlotTicker() {
       viewBox={`0 0 ${width} ${height}`}
       shapeRendering="crispEdges"
     >
-      <path d={d} fill="none" stroke="var(--cyan-dim)" strokeWidth={2} />
+      <path d={d} fill="none" stroke="var(--accent-dim)" strokeWidth={2} />
     </svg>
   );
 }

@@ -76,7 +76,7 @@ export function ProjectCard({
           href={repo.htmlUrl}
           target="_blank"
           rel="noreferrer"
-          className="inline-flex items-center gap-1 text-cyan hover:underline"
+          className="inline-flex items-center gap-1 text-accent hover:underline"
         >
           GitHub
           <ArrowUpRight weight="bold" className="h-3.5 w-3.5" />
@@ -86,7 +86,7 @@ export function ProjectCard({
             href={repo.homepage}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1 text-cyan hover:underline"
+            className="inline-flex items-center gap-1 text-accent hover:underline"
           >
             Live
             <ArrowUpRight weight="bold" className="h-3.5 w-3.5" />

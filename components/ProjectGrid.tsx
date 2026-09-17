@@ -12,7 +12,7 @@ export function ProjectGrid({ repos }: { repos: GithubRepo[] }) {
             href="https://github.com/BainsMayank"
             target="_blank"
             rel="noreferrer"
-            className="text-cyan underline decoration-cyan-dim underline-offset-4 hover:decoration-cyan"
+            className="text-accent underline decoration-accent-dim underline-offset-4 hover:decoration-accent"
           >
             github.com/BainsMayank
           </a>

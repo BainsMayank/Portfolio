@@ -24,7 +24,7 @@ export function DitheredImage({
   src,
   alt,
   darkHex = "#0a0c12",
-  lightHex = "#52d9e6",
+  lightHex = "#3dff77",
   className = "",
 }: {
   src: string;

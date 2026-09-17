@@ -11,9 +11,9 @@ colors:
   ink: "#e9ecdf"
   ink-dim: "#8b93ac"
   ink-faint: "#737d9c"
-  cyan: "#52d9e6"
-  cyan-dim: "#1f6b73"
-  cyan-dark: "#0f2f33"
+  accent: "#3dff77"
+  accent-dim: "#1f9a4d"
+  accent-dark: "#0f3320"
   green: "#5be07f"
   green-dim: "#2a6b3f"
   red: "#ff6b6b"
@@ -46,12 +46,12 @@ spacing:
   xl: "40px"
 components:
   button-primary:
-    backgroundColor: "{colors.cyan-dark}"
-    textColor: "{colors.cyan}"
+    backgroundColor: "{colors.accent-dark}"
+    textColor: "{colors.accent}"
     rounded: "{rounded.none}"
     padding: "12px 20px"
   button-primary-hover:
-    backgroundColor: "{colors.cyan}"
+    backgroundColor: "{colors.accent}"
     textColor: "{colors.screen}"
   badge-open-source:
     backgroundColor: "transparent"
@@ -82,10 +82,10 @@ Two donated disciplines keep the world from reading as a costume: the site's own
 
 ## Colors
 
-A locked palette in the PC-98/early-computer canon: a near-black screen ground, one phosphor-cyan primary, and four judge-verdict hues reserved for status meaning, never decoration.
+A locked palette in the classic hack-terminal canon: a near-black screen ground, one phosphor-green primary, and four judge-verdict hues reserved for status meaning, never decoration.
 
 ### Primary
-- **Phosphor Cyan** (`#52d9e6`): links, the primary button's default text, live-data numerals, the commit-rail's active node and indicator glow. The system's one accent that appears on interactive or "this is real data" content.
+- **Phosphor Green** (`#3dff77`): links, the primary button's default text, live-data numerals, the commit-rail's active node and indicator glow. The system's one accent that appears on interactive or "this is real data" content — brighter and more saturated than Verdict Green so a link never reads as a badge.
 
 ### Neutral
 - **Screen** (`#0a0c12`): page ground.
@@ -145,8 +145,8 @@ Zero border-radius across the entire system — every corner is square, matching
 
 ### Buttons
 - **Shape:** square corners, 2px border, `bevel-out` at rest (`0px` radius).
-- **Primary ("RUN projects.exe"):** `cyan-dark` background, `cyan` text, Silkscreen-adjacent sizing via `font-pixel` class.
-- **Hover / Focus:** inverts to `cyan` background with `screen` text (11.6:1 contrast) — a deliberate light-panel invert, not a color-shift.
+- **Primary ("RUN projects.exe"):** `accent-dark` background, `accent` text, Silkscreen-adjacent sizing via `font-pixel` class.
+- **Hover / Focus:** inverts to `accent` background with `screen` text (11.6:1 contrast) — a deliberate light-panel invert, not a color-shift.
 - **Active:** bevel flips to `bevel-in` and the button nudges 1px down-right, simulating a physical key press.
 
 ### Badges (verdict chips)
@@ -160,17 +160,17 @@ Zero border-radius across the entire system — every corner is square, matching
 
 ### Navigation
 - **Top bar (all widths):** sticky, `screen-raised` fill, logo in Silkscreen (`glitch-hover` on interaction), F-key-styled links (`bevel-out` chips) that show only the key glyph below `sm:` and the full label at `sm:` and above to avoid overflow on narrow viewports.
-- **Commit rail (`xl:` and above only):** a vertical git-graph — one circular node per section on a `bevel-light` spine, a cyan glow indicator that glides (CSS `transition: top`, not the View Transitions API — see Do's and Don'ts) to the active node as `IntersectionObserver` reports scroll position.
+- **Commit rail (`xl:` and above only):** a vertical git-graph — one circular node per section on a `bevel-light` spine, an accent glow indicator that glides (CSS `transition: top`, not the View Transitions API — see Do's and Don'ts) to whichever node a scroll-position listener reports active, with an explicit at-bottom check so the final ("contact") node still activates even though the footer is too short to occupy a mid-viewport detection band.
 
 ## Do's and Don'ts
 
 ### Do:
 - **Do** keep every badge color traceable to the repo's actual GitHub topics/visibility (`lib/github.ts`'s `inferBadge`); never assign verdict color decoratively.
-- **Do** dither any new photographic or screenshot imagery through the same ordered Bayer 4×4 pass (`components/DitheredImage.tsx`) at the locked cyan/screen duotone before it ships, with a plain-`<img>` fallback if the source can't be read back from canvas (CORS).
+- **Do** dither any new photographic or screenshot imagery through the same ordered Bayer 4×4 pass (`components/DitheredImage.tsx`) at the locked accent/screen duotone before it ships, with a plain-`<img>` fallback if the source can't be read back from canvas (CORS).
 - **Do** keep `ink-faint` and every other text token at or above 4.5:1 against its background; this system already had two accessibility regressions caught and fixed (`ink-faint` at 2.5:1, and the button's hover-state text at 3.2:1) — re-check contrast whenever a new token is introduced.
 
 ### Don't:
-- **Don't** call `document.startViewTransition` from a scroll/IntersectionObserver callback in this codebase. It was tried for the commit-rail's active-node glide and reliably corrupted the page's paint when it fired near hydration (a real, reproduced bug, not a style preference) — the glide is a plain CSS `transition: top` instead.
+- **Don't** call `document.startViewTransition` from a scroll-driven callback in this codebase. It was tried for the commit-rail's active-node glide and reliably corrupted the page's paint when it fired near hydration (a real, reproduced bug, not a style preference) — the glide is a plain CSS `transition: top` instead.
 - **Don't** introduce a soft or colored box-shadow anywhere. This world's only depth vocabulary is the two-tone bevel pair.
 - **Don't** add a third typeface. Silkscreen is for the computer's own labels; VT323 is for everything a person wrote or a live number.
 - **Don't** round a corner. `0px` radius is a system invariant, not a default that happened not to get overridden.

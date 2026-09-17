@@ -4,11 +4,11 @@
   "title": "Design System: Mayank Bains — Portfolio",
   "extensions": {
     "colorMeta": {
-      "cyan": {
+      "accent": {
         "role": "primary",
-        "displayName": "Phosphor Cyan",
-        "canonical": "#52d9e6",
-        "tonalRamp": ["#06171a", "#0f2f33", "#1f6b73", "#2f8f99", "#3fb3bf", "#52d9e6", "#8ee9f0", "#c9f5f9"]
+        "displayName": "Phosphor Green",
+        "canonical": "#3dff77",
+        "tonalRamp": ["#061a0d", "#0f3320", "#1f9a4d", "#2fc262", "#3dff77", "#6fffa0", "#a3ffc4", "#d6ffe6"]
       },
       "screen": {
         "role": "neutral",
@@ -76,7 +76,7 @@
       "refersTo": "button-primary",
       "description": "The hero's 'RUN projects.exe' call to action.",
       "html": "<a href=\"#projects\" class=\"ds-pixel-btn\">RUN projects.exe</a>",
-      "css": ".ds-pixel-btn { display: inline-block; font-family: 'Silkscreen', monospace; border: 2px solid #05060a; background: #0f2f33; color: #52d9e6; padding: 12px 20px; border-radius: 0; box-shadow: inset 1px 1px 0 #52d9e6, inset -2px -2px 0 #020305; transition: background 80ms steps(2), color 80ms steps(2); } .ds-pixel-btn:hover, .ds-pixel-btn:focus-visible { background: #52d9e6; color: #0a0c12; }"
+      "css": ".ds-pixel-btn { display: inline-block; font-family: 'Silkscreen', monospace; border: 2px solid #05060a; background: #0f3320; color: #3dff77; padding: 12px 20px; border-radius: 0; box-shadow: inset 1px 1px 0 #3dff77, inset -2px -2px 0 #020305; transition: background 80ms steps(2), color 80ms steps(2); } .ds-pixel-btn:hover, .ds-pixel-btn:focus-visible { background: #3dff77; color: #0a0c12; }"
     },
     {
       "name": "Window",
@@ -84,7 +84,7 @@
       "refersTo": "window",
       "description": "The system's signature container: a bordered, beveled OS window with a title bar, used for every content section.",
       "html": "<div class=\"ds-window\"><div class=\"ds-window-bar\"><span class=\"ds-window-corner\"></span><span class=\"ds-window-corner ds-window-corner--alt\"></span><span class=\"ds-window-title\">IDENTITY.SYS</span></div><div class=\"ds-window-body\">Content</div></div>",
-      "css": ".ds-window { border: 2px solid #05060a; background: #12151f; box-shadow: inset 1px 1px 0 #3a4160, inset -1px -1px 0 #020305; } .ds-window-bar { display: flex; align-items: center; gap: 12px; border-bottom: 2px solid #05060a; background: #05060a; padding: 8px 12px; } .ds-window-corner { width: 8px; height: 8px; background: #1f6b73; } .ds-window-corner--alt { background: #2a6b3f; } .ds-window-title { font-family: 'Silkscreen', monospace; font-size: 11px; color: #8b93ac; } .ds-window-body { padding: 24px; color: #e9ecdf; font-family: 'VT323', monospace; font-size: 18px; }"
+      "css": ".ds-window { border: 2px solid #05060a; background: #12151f; box-shadow: inset 1px 1px 0 #3a4160, inset -1px -1px 0 #020305; } .ds-window-bar { display: flex; align-items: center; gap: 12px; border-bottom: 2px solid #05060a; background: #05060a; padding: 8px 12px; } .ds-window-corner { width: 8px; height: 8px; background: #1f9a4d; } .ds-window-corner--alt { background: #2a6b3f; } .ds-window-title { font-family: 'Silkscreen', monospace; font-size: 11px; color: #8b93ac; } .ds-window-body { padding: 24px; color: #e9ecdf; font-family: 'VT323', monospace; font-size: 18px; }"
     },
     {
       "name": "Verdict Badge",
@@ -100,7 +100,7 @@
       "refersTo": "commit-rail-node",
       "description": "One section node on the desktop-only left navigation rail, rendered as a git-graph.",
       "html": "<a href=\"#activity\" class=\"ds-rail-node ds-rail-node--active\"><span class=\"ds-rail-dot\"></span><span class=\"ds-rail-label\">activity</span></a>",
-      "css": ".ds-rail-node { display: flex; align-items: center; gap: 12px; padding: 8px 0 8px 20px; text-decoration: none; } .ds-rail-dot { width: 10px; height: 10px; border: 1px solid #3a4160; background: #05060a; } .ds-rail-node--active .ds-rail-dot { border-color: #52d9e6; background: #52d9e6; } .ds-rail-label { font-family: 'VT323', monospace; font-size: 18px; color: #737d9c; } .ds-rail-node--active .ds-rail-label { color: #52d9e6; }"
+      "css": ".ds-rail-node { display: flex; align-items: center; gap: 12px; padding: 8px 0 8px 20px; text-decoration: none; } .ds-rail-dot { width: 10px; height: 10px; border: 1px solid #3a4160; background: #05060a; } .ds-rail-node--active .ds-rail-dot { border-color: #3dff77; background: #3dff77; } .ds-rail-label { font-family: 'VT323', monospace; font-size: 18px; color: #737d9c; } .ds-rail-node--active .ds-rail-label { color: #3dff77; }"
     }
   ],
   "narrative": {

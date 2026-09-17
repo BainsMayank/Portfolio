@@ -23,12 +23,12 @@ export function CopyEmail({ className = "" }: { className?: string }) {
     <button
       type="button"
       onClick={handleCopy}
-      className={`glitch-hover inline-flex items-center gap-1.5 text-left text-ink transition-colors hover:text-cyan ${className}`}
+      className={`glitch-hover inline-flex items-center gap-1.5 text-left text-ink transition-colors hover:text-accent ${className}`}
       aria-label="Copy email address to clipboard"
     >
       {copied ? "copied" : DISPLAY}
       {copied ? (
-        <Check weight="bold" className="h-3.5 w-3.5 text-cyan" />
+        <Check weight="bold" className="h-3.5 w-3.5 text-accent" />
       ) : (
         <Copy weight="bold" className="h-3.5 w-3.5 text-ink-faint" />
       )}

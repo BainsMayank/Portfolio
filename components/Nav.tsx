@@ -21,9 +21,9 @@ export function Nav() {
               key={link.href}
               href={link.href}
               aria-label={`${link.key}: jump to ${link.label}`}
-              className="bevel-out group flex shrink-0 items-center gap-1 px-1.5 py-1 text-sm text-ink-dim transition-colors hover:text-cyan sm:gap-1.5 sm:px-2"
+              className="bevel-out group flex shrink-0 items-center gap-1 px-1.5 py-1 text-sm text-ink-dim transition-colors hover:text-accent sm:gap-1.5 sm:px-2"
             >
-              <span className="font-pixel text-[10px] text-cyan-dim group-hover:text-cyan">
+              <span className="font-pixel text-[10px] text-accent-dim group-hover:text-accent">
                 {link.key}
               </span>
               <span className="hidden font-term text-base leading-none sm:inline">

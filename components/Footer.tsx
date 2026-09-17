@@ -7,7 +7,7 @@ export function Footer({ githubHandle }: { githubHandle: string }) {
         <p className="flex items-center gap-2">
           <span aria-hidden className="h-2 w-2 cycle-dot" />
           STATUS: ONLINE
-          <span aria-hidden className="term-cursor text-cyan">
+          <span aria-hidden className="term-cursor text-accent">
             _
           </span>
         </p>
@@ -16,14 +16,14 @@ export function Footer({ githubHandle }: { githubHandle: string }) {
             href={`https://github.com/${githubHandle}`}
             target="_blank"
             rel="noreferrer"
-            className="text-cyan hover:underline"
+            className="text-accent hover:underline"
           >
             github: @{githubHandle}
           </a>
           <span className="text-bevel-light">·</span>
           <CopyEmail />
           <span className="text-bevel-light">·</span>
-          <a href="#top" className="text-cyan hover:underline">
+          <a href="#top" className="text-accent hover:underline">
             back to top
           </a>
         </p>

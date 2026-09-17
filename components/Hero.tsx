@@ -31,7 +31,7 @@ export function Hero({ profile }: { profile: GithubProfile | null }) {
         >
           <div className="flex items-center gap-3 border-b-2 border-screen-inset bg-screen-inset px-3 py-2">
             <span className="window-corner" aria-hidden />
-            <span className="window-corner bg-cyan-dim" aria-hidden />
+            <span className="window-corner bg-accent-dim" aria-hidden />
             <span className="font-pixel text-[11px] text-ink-dim">
               IDENTITY.SYS
             </span>
@@ -108,7 +108,7 @@ export function Hero({ profile }: { profile: GithubProfile | null }) {
                 </div>
                 <div>
                   <dt className="text-ink-faint">followers</dt>
-                  <dd className="text-2xl text-cyan">
+                  <dd className="text-2xl text-accent">
                     {profile?.followers ?? "—"}
                   </dd>
                 </div>
@@ -120,7 +120,7 @@ export function Hero({ profile }: { profile: GithubProfile | null }) {
                     href={githubUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-cyan underline decoration-cyan-dim underline-offset-4 hover:decoration-cyan"
+                    className="text-accent underline decoration-accent-dim underline-offset-4 hover:decoration-accent"
                   >
                     @{githubHandle}
                   </a>
