@@ -23,8 +23,8 @@ function hexToRgb(hex: string): [number, number, number] {
 export function DitheredImage({
   src,
   alt,
-  darkHex = "#0a0c12",
-  lightHex = "#3dff77",
+  darkHex = "#06120a",
+  lightHex = "#f2f6ee",
   className = "",
 }: {
   src: string;

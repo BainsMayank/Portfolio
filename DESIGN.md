@@ -2,18 +2,18 @@
 name: Mayank Bains — Portfolio
 description: A booted-up 16-color pixel computer, not a decorated dev-blog.
 colors:
-  screen: "#0a0c12"
-  screen-raised: "#12151f"
-  screen-inset: "#05060a"
-  grid-line: "#1b1f2c"
-  bevel-light: "#3a4160"
-  bevel-dark: "#020305"
+  screen: "#06120a"
+  screen-raised: "#0d1f13"
+  screen-inset: "#030a05"
+  grid-line: "#0e2015"
+  bevel-light: "#2d4a35"
+  bevel-dark: "#010601"
   ink: "#e9ecdf"
-  ink-dim: "#8b93ac"
-  ink-faint: "#737d9c"
-  accent: "#3dff77"
-  accent-dim: "#1f9a4d"
-  accent-dark: "#0f3320"
+  ink-dim: "#8fa392"
+  ink-faint: "#6f8574"
+  accent: "#f2f6ee"
+  accent-dim: "#9caa9e"
+  accent-dark: "#142a19"
   green: "#5be07f"
   green-dim: "#2a6b3f"
   red: "#ff6b6b"
@@ -74,6 +74,7 @@ The site does not decorate itself with pixel motifs — it renders as an actual 
 Two donated disciplines keep the world from reading as a costume: the site's own navigation is a literal git commit graph (one node per section, wired to real scroll position), and repo badges borrow judge-verdict coloring from competitive-programming scoreboards (AC-green, WA-adjacent tones) rather than an arbitrary tag palette. A third donation — a one-frame RGB channel misregistration pulse on hover/focus, lifted from risograph print misalignment — is the system's only "glitch" and it never runs continuously.
 
 **Key Characteristics:**
+- A blackish-green terminal housing (screen, grid, chrome) with a single white interactive accent — never a second green, so links and live data stand apart from the environment instead of blending into it
 - Fixed 24px pixel grid as the page's literal material, not a decorative afterthought
 - Hard 2-tone bevel borders (inset/outset) stand in for all depth — no soft shadows anywhere
 - Two bitmap/CRT-lineage faces only: Silkscreen for display, VT323 for everything read at length
@@ -82,20 +83,20 @@ Two donated disciplines keep the world from reading as a costume: the site's own
 
 ## Colors
 
-A locked palette in the classic hack-terminal canon: a near-black screen ground, one phosphor-green primary, and four judge-verdict hues reserved for status meaning, never decoration.
+A locked palette in the classic hack-terminal canon: a near-black, green-tinted screen ground and grid (the "phosphor housing"), one white primary for anything interactive, and four judge-verdict hues reserved for status meaning, never decoration.
 
 ### Primary
-- **Phosphor Green** (`#3dff77`): links, the primary button's default text, live-data numerals, the commit-rail's active node and indicator glow. The system's one accent that appears on interactive or "this is real data" content — brighter and more saturated than Verdict Green so a link never reads as a badge.
+- **Terminal White** (`#f2f6ee`): links, the primary button's default text, live-data numerals, the commit-rail's active node and indicator glow. The system's one accent that appears on interactive or "this is real data" content — deliberately white rather than a second green, so it reads against the green environment instead of blending into it.
 
 ### Neutral
-- **Screen** (`#0a0c12`): page ground.
-- **Screen Raised** (`#12151f`): window body fill (the "bevel-out" surface).
-- **Screen Inset** (`#05060a`): window title bars, borders, and the "bevel-in" recessed surface (live-stat panel, readouts).
-- **Grid Line** (`#1b1f2c`): the page-wide 24px background lattice.
-- **Bevel Light / Bevel Dark** (`#3a4160` / `#020305`): the two-tone highlight/shadow pair every raised or recessed edge is built from.
+- **Screen** (`#06120a`): page ground — a blackish green, not a neutral black.
+- **Screen Raised** (`#0d1f13`): window body fill (the "bevel-out" surface).
+- **Screen Inset** (`#030a05`): window title bars, borders, and the "bevel-in" recessed surface (live-stat panel, readouts).
+- **Grid Line** (`#0e2015`): the page-wide 24px background lattice — kept only one step above Screen (contrast ratio ~1.1:1) so it reads as texture, not as a bright foreground grid.
+- **Bevel Light / Bevel Dark** (`#2d4a35` / `#010601`): the two-tone highlight/shadow pair every raised or recessed edge is built from.
 - **Ink** (`#e9ecdf`): primary text, headings.
-- **Ink Dim** (`#8b93ac`): secondary text (body copy, descriptions).
-- **Ink Faint** (`#737d9c`): tertiary labels (`dt` keys, inactive nav labels, tag text) — tinted blue-gray, never true gray, and kept at 4.79:1 against Screen so it stays legible rather than merely decorative-dim.
+- **Ink Dim** (`#8fa392`): secondary text (body copy, descriptions) — tinted green-gray to match the environment.
+- **Ink Faint** (`#6f8574`): tertiary labels (`dt` keys, inactive nav labels, tag text) — tinted green-gray, never true gray, and kept at 4.81:1 against Screen so it stays legible rather than merely decorative-dim.
 
 ### Verdict Roles (judge-scoreboard donation — status only, never decorative)
 - **Green** (`#5be07f`) / dim `#2a6b3f`: "open source" badge, contribution-graph activity levels.
@@ -146,7 +147,7 @@ Zero border-radius across the entire system — every corner is square, matching
 ### Buttons
 - **Shape:** square corners, 2px border, `bevel-out` at rest (`0px` radius).
 - **Primary ("RUN projects.exe"):** `accent-dark` background, `accent` text, Silkscreen-adjacent sizing via `font-pixel` class.
-- **Hover / Focus:** inverts to `accent` background with `screen` text (11.6:1 contrast) — a deliberate light-panel invert, not a color-shift.
+- **Hover / Focus:** inverts to `accent` background with `screen` text (17.5:1 contrast) — a deliberate light-panel invert, not a color-shift.
 - **Active:** bevel flips to `bevel-in` and the button nudges 1px down-right, simulating a physical key press.
 
 ### Badges (verdict chips)

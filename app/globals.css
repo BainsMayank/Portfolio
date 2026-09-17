@@ -1,22 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  /* locked 16-step PC-98 canon: screen ground, phosphor ink, four verdict hues,
-     each with a dim step for chrome/borders and a dark step for dither */
-  --screen: #0a0c12;
-  --screen-raised: #12151f;
-  --screen-inset: #05060a;
-  --grid-line: #1b1f2c;
-  --bevel-light: #3a4160;
-  --bevel-dark: #020305;
+  /* locked 16-step canon: a blackish-green terminal ground and grid, white
+     interactive accent, four verdict hues each with a dim chrome/dither step */
+  --screen: #06120a;
+  --screen-raised: #0d1f13;
+  --screen-inset: #030a05;
+  --grid-line: #0e2015;
+  --bevel-light: #2d4a35;
+  --bevel-dark: #010601;
 
   --ink: #e9ecdf;
-  --ink-dim: #8b93ac;
-  --ink-faint: #737d9c;
+  --ink-dim: #8fa392;
+  --ink-faint: #6f8574;
 
-  --accent: #3dff77;
-  --accent-dim: #1f9a4d;
-  --accent-dark: #0f3320;
+  --accent: #f2f6ee;
+  --accent-dim: #9caa9e;
+  --accent-dark: #142a19;
 
   --green: #5be07f;
   --green-dim: #2a6b3f;
@@ -237,12 +237,12 @@ h3,
 @property --cycle-hue {
   syntax: "<color>";
   inherits: false;
-  initial-value: #3dff77;
+  initial-value: #f2f6ee;
 }
 
 @keyframes palette-cycle {
   0% {
-    --cycle-hue: #3dff77;
+    --cycle-hue: #f2f6ee;
   }
   33% {
     --cycle-hue: #ffbd4f;
@@ -251,7 +251,7 @@ h3,
     --cycle-hue: #6f9dff;
   }
   100% {
-    --cycle-hue: #3dff77;
+    --cycle-hue: #f2f6ee;
   }
 }
 

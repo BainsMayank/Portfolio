@@ -102,7 +102,7 @@ export function Hero({ profile }: { profile: GithubProfile | null }) {
               <dl className="grid grid-cols-2 gap-4 font-term text-lg">
                 <div>
                   <dt className="text-ink-faint">repos</dt>
-                  <dd className="text-2xl text-green">
+                  <dd className="text-2xl text-accent">
                     {profile?.publicRepos ?? "—"}
                   </dd>
                 </div>
