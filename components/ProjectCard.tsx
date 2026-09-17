@@ -1,22 +1,38 @@
-import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
+"use client";
+
+import { motion, useReducedMotion } from "motion/react";
+import { ArrowUpRight } from "@phosphor-icons/react";
 import { BrowserChrome } from "./BrowserChrome";
 import type { GithubRepo } from "@/lib/github";
 import { getLanguageColor } from "@/lib/languageColors";
 
 const BADGE_STYLES: Record<GithubRepo["badge"], string> = {
-  "open source": "border-accent-teal/50 text-accent-teal",
-  "closed source": "border-border-color-strong text-muted-strong",
-  coursework: "border-accent-amber/50 text-accent-amber",
-  hackathon: "border-[hsl(350_45%_58%)]/50 text-[hsl(350_45%_68%)]",
-  research: "border-[hsl(210_50%_60%)]/50 text-[hsl(210_50%_70%)]",
+  "open source": "verdict-open",
+  "closed source": "verdict-closed",
+  coursework: "verdict-coursework",
+  hackathon: "verdict-hackathon",
+  research: "verdict-research",
 };
 
-export function ProjectCard({ repo }: { repo: GithubRepo }) {
+export function ProjectCard({
+  repo,
+  index,
+}: {
+  repo: GithubRepo;
+  index: number;
+}) {
   const urlPath = repo.htmlUrl.replace(/^https?:\/\//, "");
   const tags = repo.languages.slice(0, 4);
+  const reduce = useReducedMotion();
 
   return (
-    <div className="group flex flex-col">
+    <motion.div
+      initial={reduce ? false : { opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.35, delay: reduce ? 0 : (index % 2) * 0.06 }}
+      className="group flex flex-col"
+    >
       <BrowserChrome
         url={urlPath}
         imageSrc={`https://opengraph.githubassets.com/1/${urlPath.replace("github.com/", "")}`}
@@ -24,18 +40,16 @@ export function ProjectCard({ repo }: { repo: GithubRepo }) {
       />
 
       <div className="mt-4 flex items-start justify-between gap-3">
-        <h3 className="text-base font-semibold text-foreground">
-          {repo.name}
-        </h3>
+        <h3 className="font-pixel text-sm text-ink">{repo.name}</h3>
         <span
-          className={`shrink-0 rounded-md border px-2 py-0.5 text-[11px] ${BADGE_STYLES[repo.badge]}`}
+          className={`shrink-0 border px-2 py-0.5 font-term text-sm ${BADGE_STYLES[repo.badge]}`}
         >
           {repo.badge}
         </span>
       </div>
 
       {repo.description && (
-        <p className="mt-2 text-sm leading-relaxed text-muted-strong">
+        <p className="mt-2 font-term text-lg leading-snug text-ink-dim">
           {repo.description}
         </p>
       )}
@@ -45,10 +59,10 @@ export function ProjectCard({ repo }: { repo: GithubRepo }) {
           {tags.map((tag) => (
             <span
               key={tag}
-              className="inline-flex items-center gap-1.5 rounded-md border border-border-color px-2 py-0.5 text-[11px] text-muted"
+              className="inline-flex items-center gap-1.5 border border-grid-line px-2 py-0.5 font-term text-base text-ink-faint"
             >
               <span
-                className="h-2 w-2 rounded-full"
+                className="h-2 w-2"
                 style={{ backgroundColor: getLanguageColor(tag) }}
               />
               {tag}
@@ -57,12 +71,12 @@ export function ProjectCard({ repo }: { repo: GithubRepo }) {
         </div>
       )}
 
-      <div className="mt-4 flex items-center gap-4 text-sm">
+      <div className="mt-4 flex items-center gap-4 font-term text-lg">
         <a
           href={repo.htmlUrl}
           target="_blank"
           rel="noreferrer"
-          className="inline-flex items-center gap-1 text-accent-teal hover:underline"
+          className="inline-flex items-center gap-1 text-cyan hover:underline"
         >
           GitHub
           <ArrowUpRight weight="bold" className="h-3.5 w-3.5" />
@@ -72,18 +86,18 @@ export function ProjectCard({ repo }: { repo: GithubRepo }) {
             href={repo.homepage}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1 text-accent-teal hover:underline"
+            className="inline-flex items-center gap-1 text-cyan hover:underline"
           >
             Live
             <ArrowUpRight weight="bold" className="h-3.5 w-3.5" />
           </a>
         )}
         {repo.stars > 0 && (
-          <span className="text-muted">
+          <span className="text-ink-faint">
             {repo.stars} star{repo.stars === 1 ? "" : "s"}
           </span>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }

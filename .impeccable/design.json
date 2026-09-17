@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-17T00:00:00.000Z",
+  "title": "Design System: Mayank Bains — Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "cyan": {
+        "role": "primary",
+        "displayName": "Phosphor Cyan",
+        "canonical": "#52d9e6",
+        "tonalRamp": ["#06171a", "#0f2f33", "#1f6b73", "#2f8f99", "#3fb3bf", "#52d9e6", "#8ee9f0", "#c9f5f9"]
+      },
+      "screen": {
+        "role": "neutral",
+        "displayName": "Screen Black",
+        "canonical": "#0a0c12",
+        "tonalRamp": ["#020305", "#05060a", "#0a0c12", "#12151f", "#1b1f2c", "#3a4160", "#8b93ac", "#e9ecdf"]
+      },
+      "green": {
+        "role": "secondary",
+        "displayName": "Verdict Green (AC)",
+        "canonical": "#5be07f",
+        "tonalRamp": ["#0f2b1a", "#1c4f2c", "#2a6b3f", "#3a9155", "#4bc06c", "#5be07f", "#93edaa", "#cdf7d9"]
+      },
+      "amber": {
+        "role": "secondary",
+        "displayName": "Verdict Amber (Coursework)",
+        "canonical": "#ffbd4f",
+        "tonalRamp": ["#3a2a0d", "#5c4213", "#7a5a1f", "#a5792b", "#d29a3a", "#ffbd4f", "#ffd487", "#ffebc2"]
+      },
+      "magenta": {
+        "role": "tertiary",
+        "displayName": "Verdict Magenta (Hackathon)",
+        "canonical": "#ff7ad1",
+        "tonalRamp": ["#3a1530", "#5c214c", "#7a3562", "#a54885", "#d260ab", "#ff7ad1", "#ffa6e0", "#ffd3f0"]
+      },
+      "blue": {
+        "role": "tertiary",
+        "displayName": "Verdict Blue (Research)",
+        "canonical": "#6f9dff",
+        "tonalRamp": ["#101c3a", "#1c2e5c", "#2f4a7a", "#3f63a5", "#537fd2", "#6f9dff", "#a3c0ff", "#d3e2ff"]
+      },
+      "ink-faint": {
+        "role": "neutral",
+        "displayName": "Ink Faint",
+        "canonical": "#737d9c",
+        "tonalRamp": []
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Silkscreen Display",
+        "purpose": "Headings, window title-bar captions, badge-scale chrome labels only — never body copy."
+      },
+      "body": {
+        "displayName": "VT323 Terminal",
+        "purpose": "All read content: bio, descriptions, data readouts, nav labels."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "bevel-press", "value": "80ms steps(2)", "purpose": "Button hover/active bevel and translate steps — deliberately steppy, never eased smooth." },
+      { "name": "rail-glide", "value": "300ms ease-out on `top`", "purpose": "Commit-rail active indicator repositioning; plain CSS transition, not the View Transitions API (see DESIGN.md Do's and Don'ts)." },
+      { "name": "glitch-split", "value": "220ms steps(3)", "purpose": "One-frame RGB misregistration pulse on hover/focus, donated from the declined riso-misregistration challenger." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The hero's 'RUN projects.exe' call to action.",
+      "html": "<a href=\"#projects\" class=\"ds-pixel-btn\">RUN projects.exe</a>",
+      "css": ".ds-pixel-btn { display: inline-block; font-family: 'Silkscreen', monospace; border: 2px solid #05060a; background: #0f2f33; color: #52d9e6; padding: 12px 20px; border-radius: 0; box-shadow: inset 1px 1px 0 #52d9e6, inset -2px -2px 0 #020305; transition: background 80ms steps(2), color 80ms steps(2); } .ds-pixel-btn:hover, .ds-pixel-btn:focus-visible { background: #52d9e6; color: #0a0c12; }"
+    },
+    {
+      "name": "Window",
+      "kind": "card",
+      "refersTo": "window",
+      "description": "The system's signature container: a bordered, beveled OS window with a title bar, used for every content section.",
+      "html": "<div class=\"ds-window\"><div class=\"ds-window-bar\"><span class=\"ds-window-corner\"></span><span class=\"ds-window-corner ds-window-corner--alt\"></span><span class=\"ds-window-title\">IDENTITY.SYS</span></div><div class=\"ds-window-body\">Content</div></div>",
+      "css": ".ds-window { border: 2px solid #05060a; background: #12151f; box-shadow: inset 1px 1px 0 #3a4160, inset -1px -1px 0 #020305; } .ds-window-bar { display: flex; align-items: center; gap: 12px; border-bottom: 2px solid #05060a; background: #05060a; padding: 8px 12px; } .ds-window-corner { width: 8px; height: 8px; background: #1f6b73; } .ds-window-corner--alt { background: #2a6b3f; } .ds-window-title { font-family: 'Silkscreen', monospace; font-size: 11px; color: #8b93ac; } .ds-window-body { padding: 24px; color: #e9ecdf; font-family: 'VT323', monospace; font-size: 18px; }"
+    },
+    {
+      "name": "Verdict Badge",
+      "kind": "chip",
+      "refersTo": "badge-open-source",
+      "description": "Repo classification chip; color is always traceable to the repo's real GitHub topics.",
+      "html": "<span class=\"ds-badge ds-badge--open\">open source</span>",
+      "css": ".ds-badge { display: inline-block; border: 1px solid; padding: 2px 8px; font-family: 'VT323', monospace; font-size: 14px; border-radius: 0; } .ds-badge--open { color: #5be07f; border-color: #2a6b3f; } .ds-badge--coursework { color: #ffbd4f; border-color: #7a5a1f; } .ds-badge--hackathon { color: #ff7ad1; border-color: #7a3562; } .ds-badge--research { color: #6f9dff; border-color: #2f4a7a; }"
+    },
+    {
+      "name": "Commit Rail Node",
+      "kind": "nav",
+      "refersTo": "commit-rail-node",
+      "description": "One section node on the desktop-only left navigation rail, rendered as a git-graph.",
+      "html": "<a href=\"#activity\" class=\"ds-rail-node ds-rail-node--active\"><span class=\"ds-rail-dot\"></span><span class=\"ds-rail-label\">activity</span></a>",
+      "css": ".ds-rail-node { display: flex; align-items: center; gap: 12px; padding: 8px 0 8px 20px; text-decoration: none; } .ds-rail-dot { width: 10px; height: 10px; border: 1px solid #3a4160; background: #05060a; } .ds-rail-node--active .ds-rail-dot { border-color: #52d9e6; background: #52d9e6; } .ds-rail-label { font-family: 'VT323', monospace; font-size: 18px; color: #737d9c; } .ds-rail-node--active .ds-rail-label { color: #52d9e6; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Booted Screen",
+    "overview": "The site does not decorate itself with pixel motifs — it renders as an actual 16-color computer that has just powered on. Every surface lives inside a bordered, beveled 'window' docked to a fixed region, the way a PC-98-era or early-Windows desktop composes itself from chrome, not cards. The system replaces the incumbent look entirely; that look is anti-reference only, kept nowhere in the new build. Two donated disciplines keep the world from reading as a costume: the site's own navigation is a literal git commit graph, and repo badges borrow judge-verdict coloring from competitive-programming scoreboards rather than an arbitrary tag palette. A third donation — a one-frame RGB channel misregistration pulse on hover/focus, lifted from risograph print misalignment — is the system's only 'glitch' and it never runs continuously.",
+    "keyCharacteristics": [
+      "Fixed 24px pixel grid as the page's literal material, not a decorative afterthought",
+      "Hard 2-tone bevel borders (inset/outset) stand in for all depth — no soft shadows anywhere",
+      "Two bitmap/CRT-lineage faces only: Silkscreen for display, VT323 for everything read at length",
+      "Live GitHub data rendered as terminal-style readouts, never restyled as generic stat cards",
+      "Repo preview images are ordered-dithered to the locked palette on canvas at load time"
+    ],
+    "rules": [
+      { "name": "The Verdict Rule", "body": "Color on a badge or status dot always means a classification a visitor could look up, never a mood or a decorative accent.", "section": "colors" },
+      { "name": "The Two-Face Rule", "body": "Nothing on the page is set in a third font. A word is either a computer's own label (Silkscreen) or content a person wrote (VT323).", "section": "typography" },
+      { "name": "The No-Blur Rule", "body": "Every depth cue is a hard 1px bevel pair. A soft or colored glow shadow never ships.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep every badge color traceable to the repo's actual GitHub topics/visibility.",
+      "Do dither any new photographic or screenshot imagery through the same ordered Bayer 4×4 pass at the locked duotone, with a plain-img fallback for CORS failures.",
+      "Do keep every text token at or above 4.5:1 contrast against its background."
+    ],
+    "donts": [
+      "Don't call document.startViewTransition from a scroll/IntersectionObserver callback in this codebase — it reliably corrupted the page's paint near hydration in testing.",
+      "Don't introduce a soft or colored box-shadow anywhere.",
+      "Don't add a third typeface.",
+      "Don't round a corner."
+    ]
+  }
+}

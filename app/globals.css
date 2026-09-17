@@ -1,34 +1,71 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0b;
-  --surface: #111113;
-  --surface-elevated: #17171a;
-  --border-color: #26262b;
-  --border-color-strong: #35353c;
-  --foreground: #e4e4e7;
-  --muted: #8b8b93;
-  --muted-strong: #a8a8b0;
-  --accent-teal: hsl(172 50% 48%);
-  --accent-teal-dim: hsl(172 40% 30%);
-  --accent-amber: hsl(38 58% 56%);
-  --accent-amber-dim: hsl(38 45% 32%);
+  /* locked 16-step PC-98 canon: screen ground, phosphor ink, four verdict hues,
+     each with a dim step for chrome/borders and a dark step for dither */
+  --screen: #0a0c12;
+  --screen-raised: #12151f;
+  --screen-inset: #05060a;
+  --grid-line: #1b1f2c;
+  --bevel-light: #3a4160;
+  --bevel-dark: #020305;
+
+  --ink: #e9ecdf;
+  --ink-dim: #8b93ac;
+  --ink-faint: #737d9c;
+
+  --cyan: #52d9e6;
+  --cyan-dim: #1f6b73;
+  --cyan-dark: #0f2f33;
+
+  --green: #5be07f;
+  --green-dim: #2a6b3f;
+
+  --red: #ff6b6b;
+  --red-dim: #7a2f2f;
+
+  --amber: #ffbd4f;
+  --amber-dim: #7a5a1f;
+
+  --magenta: #ff7ad1;
+  --magenta-dim: #7a3562;
+
+  --blue: #6f9dff;
+  --blue-dim: #2f4a7a;
+
+  --font-pixel: var(--font-silkscreen);
+  --font-term: var(--font-vt323);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-surface: var(--surface);
-  --color-surface-elevated: var(--surface-elevated);
-  --color-border-color: var(--border-color);
-  --color-border-color-strong: var(--border-color-strong);
-  --color-foreground: var(--foreground);
-  --color-muted: var(--muted);
-  --color-muted-strong: var(--muted-strong);
-  --color-accent-teal: var(--accent-teal);
-  --color-accent-teal-dim: var(--accent-teal-dim);
-  --color-accent-amber: var(--accent-amber);
-  --color-accent-amber-dim: var(--accent-amber-dim);
-  --font-mono: var(--font-geist-mono);
+  --color-screen: var(--screen);
+  --color-screen-raised: var(--screen-raised);
+  --color-screen-inset: var(--screen-inset);
+  --color-grid-line: var(--grid-line);
+  --color-bevel-light: var(--bevel-light);
+  --color-bevel-dark: var(--bevel-dark);
+
+  --color-ink: var(--ink);
+  --color-ink-dim: var(--ink-dim);
+  --color-ink-faint: var(--ink-faint);
+
+  --color-cyan: var(--cyan);
+  --color-cyan-dim: var(--cyan-dim);
+  --color-cyan-dark: var(--cyan-dark);
+
+  --color-green: var(--green);
+  --color-green-dim: var(--green-dim);
+  --color-red: var(--red);
+  --color-red-dim: var(--red-dim);
+  --color-amber: var(--amber);
+  --color-amber-dim: var(--amber-dim);
+  --color-magenta: var(--magenta);
+  --color-magenta-dim: var(--magenta-dim);
+  --color-blue: var(--blue);
+  --color-blue-dim: var(--blue-dim);
+
+  --font-pixel: var(--font-pixel);
+  --font-term: var(--font-term);
 }
 
 html {
@@ -36,44 +73,204 @@ html {
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  background: var(--screen);
+  color: var(--ink);
+  font-family: var(--font-term), ui-monospace, monospace;
+  font-size: 18px;
+  line-height: 1.5;
+  background-image:
+    repeating-linear-gradient(
+      rgba(0, 0, 0, 0.22) 0px,
+      rgba(0, 0, 0, 0.22) 1px,
+      transparent 1px,
+      transparent 3px
+    ),
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size:
+    100% 3px,
+    24px 24px,
+    24px 24px;
+  background-position:
+    0 0,
+    -1px -1px,
+    -1px -1px;
+  background-attachment: fixed, scroll, scroll;
+}
+
+h1,
+h2,
+h3,
+.font-pixel {
+  font-family: var(--font-pixel), var(--font-term), monospace;
+  letter-spacing: 0;
+  image-rendering: pixelated;
 }
 
 ::selection {
-  background: var(--accent-teal-dim);
-  color: var(--foreground);
+  background: var(--cyan);
+  color: var(--screen);
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent-teal);
+  outline: 3px solid var(--cyan);
   outline-offset: 2px;
-  border-radius: 2px;
+  border-radius: 0;
 }
 
 * {
-  scrollbar-color: var(--border-color-strong) var(--background);
+  scrollbar-color: var(--bevel-light) var(--screen);
   scrollbar-width: thin;
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 14px;
+  height: 14px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--background);
+  background: var(--screen-inset);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border-color-strong);
-  border-radius: 999px;
-  border: 2px solid var(--background);
+  background: var(--bevel-light);
+  border: 3px solid var(--screen-inset);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-teal-dim);
+  background: var(--cyan-dim);
+}
+
+/* pixel bevel: a hard 2-tone inset/outset frame instead of a soft shadow --
+   this is the committed world's own depth system, not a decorative shadow */
+.bevel-out {
+  border: 2px solid var(--screen-inset);
+  box-shadow:
+    inset 1px 1px 0 var(--bevel-light),
+    inset -1px -1px 0 var(--bevel-dark);
+  background: var(--screen-raised);
+}
+
+.bevel-in {
+  border: 2px solid var(--screen-inset);
+  box-shadow:
+    inset 1px 1px 0 var(--bevel-dark),
+    inset -1px -1px 0 var(--bevel-light);
+  background: var(--screen-inset);
+}
+
+.window-corner {
+  width: 8px;
+  height: 8px;
+  background: var(--cyan-dim);
+}
+
+.pixel-btn {
+  font-family: var(--font-pixel), monospace;
+  border: 2px solid var(--screen-inset);
+  background: var(--cyan-dark);
+  color: var(--cyan);
+  box-shadow:
+    inset 1px 1px 0 var(--cyan),
+    inset -2px -2px 0 var(--bevel-dark);
+  transition: transform 80ms steps(2), box-shadow 80ms steps(2);
+}
+
+.pixel-btn:hover,
+.pixel-btn:focus-visible {
+  background: var(--cyan);
+  color: var(--screen);
+}
+
+.pixel-btn:active {
+  box-shadow:
+    inset -1px -1px 0 var(--cyan),
+    inset 2px 2px 0 var(--bevel-dark);
+  transform: translate(1px, 1px);
+}
+
+/* verdict-colored, judge-scoreboard-derived badge system */
+.verdict-open {
+  color: var(--green);
+  border-color: var(--green-dim);
+}
+.verdict-closed {
+  color: var(--ink-dim);
+  border-color: var(--bevel-light);
+}
+.verdict-coursework {
+  color: var(--amber);
+  border-color: var(--amber-dim);
+}
+.verdict-hackathon {
+  color: var(--magenta);
+  border-color: var(--magenta-dim);
+}
+.verdict-research {
+  color: var(--blue);
+  border-color: var(--blue-dim);
+}
+
+/* one-frame RGB misregistration pulse, donated from the declined riso challenger */
+@keyframes glitch-split {
+  0% {
+    text-shadow: none;
+  }
+  30% {
+    text-shadow:
+      -2px 0 var(--red),
+      2px 0 var(--cyan);
+  }
+  100% {
+    text-shadow: none;
+  }
+}
+
+.glitch-hover:hover,
+.glitch-hover:focus-visible {
+  animation: glitch-split 220ms steps(3);
+}
+
+/* palette-cycle accent, used sparingly on live-status indicators */
+@property --cycle-hue {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #52d9e6;
+}
+
+@keyframes palette-cycle {
+  0% {
+    --cycle-hue: #52d9e6;
+  }
+  33% {
+    --cycle-hue: #5be07f;
+  }
+  66% {
+    --cycle-hue: #ffbd4f;
+  }
+  100% {
+    --cycle-hue: #52d9e6;
+  }
+}
+
+.cycle-dot {
+  background: var(--cycle-hue);
+  animation: palette-cycle 6s linear infinite;
+}
+
+@keyframes cursor-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.term-cursor {
+  animation: cursor-blink 1s steps(1) infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {

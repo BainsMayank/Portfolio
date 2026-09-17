@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { DitheredImage } from "./DitheredImage";
 
 export function BrowserChrome({
   url,
@@ -10,26 +10,16 @@ export function BrowserChrome({
   imageAlt: string;
 }) {
   return (
-    <div className="overflow-hidden rounded-md border border-border-color bg-surface transition-all duration-300 group-hover:-translate-y-0.5 group-hover:border-accent-teal/40">
-      <div className="flex items-center gap-3 border-b border-border-color bg-surface-elevated px-3 py-2">
-        <div className="flex gap-1.5">
-          <span className="h-2.5 w-2.5 rounded-full bg-border-color-strong" />
-          <span className="h-2.5 w-2.5 rounded-full bg-border-color-strong" />
-          <span className="h-2.5 w-2.5 rounded-full bg-border-color-strong" />
-        </div>
-        <div className="min-w-0 flex-1 truncate rounded-sm bg-background/60 px-2 py-0.5 text-[11px] text-muted">
+    <div className="bevel-out overflow-hidden transition-transform duration-150 group-hover:-translate-y-1">
+      <div className="flex items-center gap-2 border-b-2 border-screen-inset bg-screen-inset px-2 py-1.5">
+        <span className="window-corner" aria-hidden />
+        <span className="window-corner bg-green-dim" aria-hidden />
+        <div className="bevel-in min-w-0 flex-1 truncate px-2 py-0.5 font-term text-base text-ink-dim">
           {url}
         </div>
       </div>
-      <div className="relative aspect-[1200/630] w-full bg-background">
-        <Image
-          src={imageSrc}
-          alt={imageAlt}
-          fill
-          className="object-cover"
-          sizes="(min-width: 768px) 50vw, 100vw"
-          unoptimized
-        />
+      <div className="relative aspect-[1200/630] w-full bg-screen">
+        <DitheredImage src={imageSrc} alt={imageAlt} />
       </div>
     </div>
   );
